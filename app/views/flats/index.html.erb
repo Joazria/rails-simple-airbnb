@@ -1,2 +1,27 @@
-<h1>Flats#index</h1>
-<p>Find me in app/views/flats/index.html.erb</p>
+
+<div class="container">
+  <div class="content mt-3">
+    <h1>Flats Listing</h1>
+    <div class="row">
+      <% @flats.each do |flat| %>
+        <div class="col-4">
+          <div class="flat-card">
+        <h1><%= flat.name %></h1>
+        <h2> <%= flat.address %> </h2>
+        <h3><%= flat.description %> </h3>
+        <h2> <%= flat.price_per_night %> </h2>
+        <h2> <%= flat.number_of_guests %> </h2>
+
+        <%= link_to 'more infos', flat_path(flat), class: "btn btn-success" %>
+        <%= link_to 'edit', edit_flat_path(flat), class: "btn btn-primary" %>
+        <%= link_to 'Delete', flat_path(flat),
+              data: {:confirm => 'Are you sure?'}, :method => :delete , class: "btn btn-danger"%>
+        <br>
+      <% end %>
+
+<h3><%= link_to 'add a new flat', new_flat_path %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
